@@ -8,13 +8,11 @@
     <!-- <IconComponent :fileName="'nodeIcon.png'" /> -->
     <!-- <IconComponent :fileName="'javascriptIcon.png'" /> -->
     <!-- <IconComponent :fileName="'PythonIcon.png'" /> -->
-
-    <button @click="getProjects" >Pedir projetos</button>
   </header>
 
   <main>
-    <div v-if="projects">
-      <ProjectComponent v-for=" project in projects" :key="project._id"/>
+    <div v-if="projects.length">
+      <ProjectComponent  v-for=" project in projects" :project="project" :key="project._id"/>
     </div>
     
   </main>
@@ -27,7 +25,7 @@
     components : {IconComponent, HeaderComponent, ProjectComponent},
     data(){
       return {
-        projects:null,
+        projects:[],
       }
     },
     methods : {
