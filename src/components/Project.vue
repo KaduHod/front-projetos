@@ -1,56 +1,68 @@
 <template>
     <div>
-        <h1>Titulo/Nome</h1>
-        <div>
-            <img src="" alt="">
+        <h1 class="project-name">{{project.name}}</h1>
+        <p class="project-description">{{project.description}}</p>
+        <a target="_blank" :href="project.link">Link para o projeto</a> 
+        <div class="project-repos">
+            <ul v-if="Array.isArray(project.repositorie)">
+                <li v-for="repositorie in project.repositorie" :key="repositorie">
+                    <a :href="repositorie" target="_blank">
+                        {{repositorie}}
+                    </a>
+                </li> 
+            </ul>
+            <a :href="project.repositorie" v-else target="_blank" >{{project.repositorie}}</a>
         </div>
-        <p>Descrição</p>
-        <a href="">link production</a>
-        <ul>
-            <li>LINK REPOSITORIE</li>
-            <li>LINK REPOSITORIE</li>
-        </ul>
-        <ul>
-            <li>
-                <h3>Tec used</h3> <IconComponent />
-            </li>
-            <li>Tecnologie used</li>
-            <li>Tecnologie used</li>
-            <li>Tecnologie used</li>
-            <li>Tecnologie used</li>
-            <li>Tecnologie used</li>
-        </ul>
-        
-        <pre>
-            {{project.name}}
-        </pre>
+        <div class="project-tecs">
+            <ul>
+                <h3>Ferramentas utilizadas no projeto</h3> 
+                <div class="tec-atts" v-for="tec in technologies" :key="tec.name">
+                    <IconComponent :tecName="tec.name"/> {{tec.type}} 
+                </div>
+            </ul>
+        </div>
         
     </div>
 </template>
 
 <script>
-import IconComponent from './components/Icon.vue'
+import IconComponent from './Icon.vue'
+import { toRefs, toRef } from 'vue'
 export default {
-    
     components : {
         IconComponent
     },
     props:{
-        project:{
-            required:true
-        }
+        project:Object
     },
-    data(){
+    setup(props, {attrs, slots, emit, expose}){
+        const {project} = toRefs(props);
+        
+        const firstLetterToUpperCase = ([first, ...rest]) => `${first.toUpperCase()}${rest.join('')}`;
+        const technologies = project.value.technologies.map( ({name, type}) => {
+            return {name: firstLetterToUpperCase(name), type: firstLetterToUpperCase(type) }
+        })
+        
         return {
-
+            project,
+            firstLetterToUpperCase,
+            technologies
         }
     },
     mounted(){
-       console.log(this.project)
+       
     }
 }
 </script>
 
 <style>
-
+.tec-atts{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 10px;
+}
+.tec-atts img{
+    margin-right: 10px;
+}
 </style>

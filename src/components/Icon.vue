@@ -1,29 +1,30 @@
 <template>
     <div class="">
-        
-        <img ref="img" src="../../../../public/icons/" alt="">
+        <img ref="img" src="../../../../public/icons/" :title="tecName" :alt="tecName">
     </div>
 </template>
 <script>
+import { toRefs, toRef } from 'vue'
+import getIconImage from '../Utils/icons.ts'
 export default {
     props : {
-        fileName: {
+        tecName: {
             type: String,
             required : false
         },
     },
-    data(){
-        return {
-        
+    setup(props){
+        function setPath(){
+            this.$refs.img.src += getIconImage[this.tecName]
+            console.log(this.$refs.img.src)
         }
-    },
-    methods: {
-        setPath(){
-            this.$refs.img.src += this.fileName
+        const {tecName} = toRefs(props)
+        return{
+            tecName: tecName.value,
+            setPath
         }
     },
     mounted(){
-        console.log(this.fileName)
         this.setPath()
     }
 }
@@ -32,6 +33,6 @@ export default {
     *{color: black;}
     img{
         width: 40px;
-        height: 40px;
+        height: auto;
     }
 </style>

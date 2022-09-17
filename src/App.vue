@@ -3,13 +3,7 @@
 </script>
 
 <template>
-  <header>
-    <!-- <HeaderComponent /> -->
-    <!-- <IconComponent :fileName="'nodeIcon.png'" /> -->
-    <!-- <IconComponent :fileName="'javascriptIcon.png'" /> -->
-    <!-- <IconComponent :fileName="'PythonIcon.png'" /> -->
-  </header>
-
+  
   <main>
     <div v-if="projects.length">
       <ProjectComponent  v-for=" project in projects" :project="project" :key="project._id"/>
@@ -31,7 +25,7 @@
     methods : {
       async getProjects(){
         try {
-          const url = 'http://localhost:9999/list-local';
+          const url = 'https://project-api-carlos.herokuapp.com/list';
           const paramsConfig = {method:'GET', mode:'cors'};
           const res = await fetch(url, paramsConfig)
           const {data} = await res.json()
@@ -43,14 +37,17 @@
       }
     },
     async mounted(){
-        this.projects = await this.getProjects()
-        console.log(this.projects)
+      this.projects = await this.getProjects()
     }
   }
 </script>
 <style scoped>
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 @media (min-width: 1024px) {
   
 }
