@@ -1,5 +1,6 @@
 export default {
     'Node': 'nodeIcon.png',
+    'TypeScript':'typescriptIcon.png',
     'Css': 'cssIcon.png',
     'Html': 'htmlIcon.png',
     'Express.js': 'expressIcon.png',
@@ -11,5 +12,13 @@ export default {
     'Javascript': 'javascriptIcon.png',
     'Laravel': 'laravelIcon.png',
     'Web-socket' : 'webSocketIcon.png',
-    'Heroku' : 'herokuIcon.png'
+    'Heroku' : 'herokuIcon.png',
+    'MongoDB' : 'mongodbIcon.png',
+    'MySql' : 'mysqlIcon.png',
+    'GitHub' : 'githubIcon.png',
+    'Git' : 'gitIcon.png',
+    'GitLab' : 'gitlab.icon',
+    'Sql Server' : 'sqlserverIcon.png',
+    'Linkedin' : 'linkedinIcon.png',
+    'Whats App' : 'whatsappIcon.png'
 }

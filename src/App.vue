@@ -1,43 +1,41 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  
   <main>
-    <div v-if="projects.length">
+    <PresentationComponent />
+    <div v-if="projects">
       <ProjectComponent  v-for=" project in projects" :project="project" :key="project._id"/>
     </div>
-    
   </main>
 </template>
 <script>
   import IconComponent from './components/Icon.vue'
   import HeaderComponent from './components/Header.vue'
   import ProjectComponent from './components/Project.vue'
+  import PresentationComponent from './components/Presentation.vue'
+  import {onBeforeMount, ref} from 'vue'
   export default {
-    components : {IconComponent, HeaderComponent, ProjectComponent},
-    data(){
-      return {
-        projects:[],
-      }
+    components : {
+      IconComponent, HeaderComponent, ProjectComponent, PresentationComponent
     },
-    methods : {
-      async getProjects(){
+    setup(props, {attrs, emit, slots, expose}){
+      const projects = ref();
+      projects.value = null
+      onBeforeMount(async () => {
         try {
           const url = 'https://project-api-carlos.herokuapp.com/list';
           const paramsConfig = {method:'GET', mode:'cors'};
           const res = await fetch(url, paramsConfig)
           const {data} = await res.json()
-          return data
+          projects.value = data
+          console.log(projects.value)
         } catch (error) {
           console.log(error)
-          return {error, message:"Erro"}
+          projects.value = {error, message:"Erro", data:null}
         }
+      })
+      
+      return{
+        projects
       }
-    },
-    async mounted(){
-      this.projects = await this.getProjects()
     }
   }
 </script>
@@ -48,6 +46,7 @@
   margin: 0;
   padding: 0;
 }
+
 @media (min-width: 1024px) {
   
 }

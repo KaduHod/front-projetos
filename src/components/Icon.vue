@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <img ref="img" src="../../../../public/icons/" :title="tecName" :alt="tecName">
+        <img ref="img" src="" :title="tecName" :alt="tecName">
     </div>
 </template>
 <script>
@@ -13,10 +13,9 @@ export default {
             required : false
         },
     },
-    setup(props){
+    setup(props, ctx){
         function setPath(){
-            this.$refs.img.src += getIconImage[this.tecName]
-            console.log(this.$refs.img.src)
+            this.$refs.img.src = '/icons/' + getIconImage[this.tecName]
         }
         const {tecName} = toRefs(props)
         return{
