@@ -1,7 +1,8 @@
 const areas:object | any = {
     'Front-end':["javascript",'css','html','vue'],
     'Back-end':["node","express.js","web-socket", "python", "flask", 'php','laravel'],
-    'Server':['heroku', 'vercel']
+    'Server':['heroku', 'vercel'],
+    'Versionamento':['git hub']
 }
 
 export const getAreaName = (tecName:string):object=> {

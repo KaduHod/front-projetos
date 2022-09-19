@@ -1,12 +1,20 @@
 
 #app {
- 
+ margin: 0;
+ padding: 0;
+ background: var(--degrade);
+}
+body{
+  background-image: url('/banners/bannerGrande.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-@media (hover: hover) {
-  
-}
 p{
   text-align: left;
   text-indent: 20px;
@@ -15,15 +23,5 @@ a{
   text-decoration: none;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+

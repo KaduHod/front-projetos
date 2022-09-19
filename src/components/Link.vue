@@ -1,5 +1,5 @@
 <template>
-    <div class="link">
+    <div class="link" :class="class">
         <IconComponent :tecName="iconName"  v-if="iconName" />
         <a :target="target" :href="link">{{title}}</a>
     </div>
@@ -11,12 +11,11 @@ import IconComponent from './Icon.vue'
 export default {
     setup(props, {emit, expose, slots, attr}){
         const {link, title, target, iconName} = toRef(props)
-        console.log(target)
-
+        
         return{
             link,
             title,
-            target
+            target : target ?? '_blank'
         }
     },
     props:{
@@ -35,6 +34,10 @@ export default {
         iconName:{
             type:String,
             required:false
+        },
+        class:{
+            type:String,
+            required:false
         }
     },
     components: {
@@ -47,12 +50,11 @@ export default {
         
         background-color: rgb(255, 255, 255);
         box-shadow: 0px 0px 15px rgba(209, 209, 209, 0.582);
-        border-radius: 10px;
+        border-radius: 5px;
         height: 20px;
         width: fit-content;
         padding: 5px;
-        padding-left: 20px;
-        padding-right: 20px;
+        
         margin-top: 15px;
         display: flex;
         justify-content: center;

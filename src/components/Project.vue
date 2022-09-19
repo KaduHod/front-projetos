@@ -19,11 +19,18 @@
                     </li>
                 </ul>
             </div>
-           
             <div class="tecs" v-if="sortedTecs['Server'].length">
                 <h3>Server</h3>
                 <ul>
                     <li class="tec-atts" v-for="tec in sortedTecs['Server']" :key="tec.name">
+                        <IconComponent :tecName="tec.name"/> {{tec.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="tecs" v-if="sortedTecs['Versionamento'].length">
+                <h3>Versionamento</h3>
+                <ul>
+                    <li class="tec-atts" v-for="tec in sortedTecs['Versionamento']" :key="tec.name">
                         <IconComponent :tecName="tec.name"/> {{tec.name}}
                     </li>
                 </ul>
@@ -70,7 +77,7 @@ export default {
             if(area) acc[area].push(tec);
             if(error) console.error(area);
             return acc
-        }, {'Front-end':[],'Back-end':[], 'Server':[]})
+        }, {'Front-end':[],'Back-end':[], 'Server':[],'Versionamento':[]})
         
         return {
             project,

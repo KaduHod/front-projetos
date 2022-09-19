@@ -1,10 +1,12 @@
 <template>
+  <header></header>
   <main>
     <PresentationComponent />
     <div v-if="projects">
       <ProjectComponent  v-for=" project in projects" :project="project" :key="project._id"/>
     </div>
   </main>
+  <footer></footer>
 </template>
 <script>
   import IconComponent from './components/Icon.vue'
@@ -14,7 +16,10 @@
   import {onBeforeMount, ref} from 'vue'
   export default {
     components : {
-      IconComponent, HeaderComponent, ProjectComponent, PresentationComponent
+      IconComponent, 
+      HeaderComponent, 
+      ProjectComponent, 
+      PresentationComponent
     },
     setup(props, {attrs, emit, slots, expose}){
       const projects = ref();
@@ -46,7 +51,9 @@
   margin: 0;
   padding: 0;
 }
-
+main{
+  margin: 0;
+}
 @media (min-width: 1024px) {
   
 }

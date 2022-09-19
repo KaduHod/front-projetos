@@ -15,7 +15,7 @@ export default {
     'Heroku' : 'herokuIcon.png',
     'MongoDB' : 'mongodbIcon.png',
     'MySql' : 'mysqlIcon.png',
-    'GitHub' : 'githubIcon.png',
+    'Git Hub' : 'githubIcon.png',
     'Git' : 'gitIcon.png',
     'GitLab' : 'gitlab.icon',
     'Sql Server' : 'sqlserverIcon.png',

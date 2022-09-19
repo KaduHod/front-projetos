@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import { toRefs, toRef,onBeforeMount } from 'vue'
+import {toRefs, toRef} from 'vue'
 import getIconImage from '../Utils/icons.ts'
 export default {
     props : {
@@ -18,6 +18,7 @@ export default {
             this.$refs.img.src = '/icons/' + getIconImage[this.tecName]
         }
         const {tecName} = toRefs(props)
+        
         return{
             tecName: tecName.value,
             setPath
