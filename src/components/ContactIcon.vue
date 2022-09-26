@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="contact-container">
         <img ref="img" src="" :title="tecName" :alt="tecName">
     </div>
 </template>
@@ -31,8 +31,13 @@ export default {
 </script>
 <style>
     *{color: black;}
-    img{
-        width: 40px;
+    .contact-container img{
+        width: 30px;
         height: auto;
+        transition: 100ms;
+    }
+    .contact-container img:hover{
+        transform: scale(1.3);
+        cursor: pointer;
     }
 </style>

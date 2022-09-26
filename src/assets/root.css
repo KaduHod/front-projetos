@@ -1,3 +1,5 @@
 :root{    
-    --degrade:linear-gradient(45deg, #2c3e5000, #8d9296bd);
+    --degrade:linear-gradient(45deg, #2c3e509c, #8d9296de);
+    --branco:rgba(218, 218, 218, 0.911);
+    --branco-claro:rgba(233, 233, 233, 0.979);
 }

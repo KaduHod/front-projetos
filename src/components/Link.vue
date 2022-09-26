@@ -54,6 +54,7 @@ export default {
         height: 20px;
         width: fit-content;
         padding: 5px;
+        text-align: center;
         
         margin-top: 15px;
         display: flex;
@@ -67,6 +68,8 @@ export default {
         box-shadow: 0px 0px 5px rgba(92, 92, 92, 0.637);
     }
     .link a{
+        width: 100%;
        margin-right: 10px; 
+       text-align: center;
     }
 </style>

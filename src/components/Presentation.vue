@@ -1,11 +1,4 @@
 <template>
-    <div class="presentation-header presentation-item">
-        <div>
-            <h1>Carlos Alberto Ribas Júnior</h1>
-            <span>Desenvolvedor de software Back-end</span>
-        </div>
-        
-    </div>
     <div id="about-me" class="whiteBC">
         <div  class="presentation-item ">
             <h2>Sobre mim</h2>
@@ -28,21 +21,12 @@
             </div>
         </div>
     </div>
-    <div id="contato" class="presentation-item">
-        <h2>Contato</h2>
-        <ul>
-            <ContactIconComponent :tecName="'Linkedin'" :class="'link-com-icone'" :title="'Linkedin'" :iconName="'Linkedin'" :link="'https://www.linkedin.com/in/carlosjrribas98/'"/>   
-            <ContactIconComponent :tecName="'Whats App'" :class="'link-com-icone'" :title="'WhatsApp'" :iconName="'Whats App'" :link="'https://wa.me/554135571982'"/>
-            <ContactIconComponent :tecName="'Git Hub'" :class="'link-com-icone'" :title="'Git Hub'" :iconName="'Git Hub'" :link="'https://github.com/KaduHod'"/> 
-        </ul>
-    </div>
 </template>
 <script>
 import { toRefs, toRef } from 'vue'
-import ContactIconComponent from './ContactIcon.vue'
 export default {
     components : {
-        ContactIconComponent
+        
     },
     props:{
        
@@ -90,7 +74,7 @@ export default {
     justify-content: space-around;
 }
 .whiteBC{
-    background-color: rgba(218, 218, 218, 0.911);
+    background-color: var(--branco);
 }
 #about-me{
     display: flex;
