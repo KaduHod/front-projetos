@@ -6,6 +6,12 @@
             </div>
             <div class="project-item-content">
                 <p class="project-description">{{project.description}}</p>
+                <div class="project-tec-icons-container">
+                    <IconComponent v-if="sortedTecs['Back-end'].length" v-for="tec in sortedTecs['Back-end']" :key="tec.name" :tecName="tec.name"/>
+                    <IconComponent v-if="sortedTecs['Front-end'].length" v-for="tec in sortedTecs['Front-end']" :key="tec.name" :tecName="tec.name"/>
+                    <IconComponent v-if="sortedTecs['Server'].length" v-for="tec in sortedTecs['Server']" :key="tec.name" :tecName="tec.name"/>
+                    <IconComponent v-if="sortedTecs['Versionamento'].length" v-for="tec in sortedTecs['Versionamento']" :key="tec.name" :tecName="tec.name"/>
+                </div> 
                 <div class="project-links">
                     <LinkComponent :link="project.link" :title="'Link para o projeto'" :target="'_blank'" />
                     <div class="project-repos">
@@ -16,58 +22,12 @@
                         </ul>
                         <LinkComponent v-else  :link="project.repositorie" :target="'_blank'" :title="'Repositório'" />
                     </div>
-                </div>
+                </div>   
             </div>
-            
         </div>
         <div class="project-item">
-            <div class="project-item-title">
-                <h2>Tecnologias</h2>
-            </div>
-            <div class="project-item-content">
-                <div class="project-tecs">
-                    <div class="tecs-names-list">
-                        <h3 v-if="sortedTecs['Back-end'].length">Back-end</h3>
-                        <h3 v-if="sortedTecs['Front-end'].length">Front-end</h3>
-                        <h3 v-if="sortedTecs['Server'].length">Servidor</h3>
-                        <h3 v-if="sortedTecs['Versionamento'].length">Versionamento</h3>
-                    </div>
-                    <div class="project-tec-icons">
-                        <li class="tec-atts" v-for="tec in sortedTecs['Server']" :key="tec.name"> 
-                             <IconComponent :tecName="tec.name"/> {{tec.name}} 
-                        </li> 
-                        
-                    </div>
-                        
-                        <!-- <ul> -->
-                            <!-- <li class="tec-atts" v-for="tec in sortedTecs['Back-end']" :key="tec.name"> -->
-                                <!-- <IconComponent :tecName="tec.name"/> {{tec.name}} -->
-                            <!-- </li> -->
-                        <!-- </ul> -->
-                            
-                            
-                        
-                        <!-- <ul> -->
-                            <!-- <li class="tec-atts" v-for="tec in sortedTecs['Front-end']" :key="tec.name"> -->
-                                <!-- <IconComponent :tecName="tec.name"/> {{tec.name}} -->
-                            <!-- </li> -->
-                        <!-- </ul> -->
-                            
-                        
-                        <!-- <ul> -->
-                            <!-- <li class="tec-atts" v-for="tec in sortedTecs['Server']" :key="tec.name"> -->
-                                <!-- <IconComponent :tecName="tec.name"/> {{tec.name}} -->
-                            <!-- </li> -->
-                        <!-- </ul> -->
-                            
-                        
-                        <!-- <ul> -->
-                            <!-- <li class="tec-atts" v-for="tec in sortedTecs['Versionamento']" :key="tec.name"> -->
-                                <!-- <IconComponent :tecName="tec.name"/> {{tec.name}} -->
-                            <!-- </li> -->
-                        <!-- </ul> -->
-                    
-                </div>
+            <div class="project-image-container">
+                <img src="/banners/eu.png" alt="">
             </div>
         </div>      
     </div>
@@ -184,13 +144,19 @@ ul{
 }
 .tecs-names-list h3{
     border-bottom: 2px solid rgba(0, 0, 0, 0);
+    padding: 10px;
     transition: 100ms;
 }
 .tecs-names-list h3:hover{
-    border-bottom: 2px solid black;
+    background-color: var(--branco-claro);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(170, 170, 170, 0.493);
     cursor: pointer;
 }
 .tecs-names-list-active{
+    background-color: var(--branco-claro);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(170, 170, 170, 0.493);
     border-bottom: 2px solid black;
 }
 .project-tecs{
@@ -207,7 +173,15 @@ ul{
     align-items: center;
 }
 
-
+.project-tec-icons{
+    width: 100%;
+    display: flex;
+}
+.project-tec-icons-container{
+    width: 80%;
+    justify-content: space-evenly;
+    display: flex;
+}
 
 .project-item{
     display: flex;
@@ -227,5 +201,11 @@ ul{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+.project-image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 </style>
