@@ -5,7 +5,7 @@ const areas:object | any = {
     'Versionamento':['git hub']
 }
 
-export const getAreaName = (tecName:string):object=> {
+export const getAreaName = (tecName:string):object => {
     tecName = tecName.toLowerCase();
     const keys = Object.keys(areas) 
     const area:string | undefined = keys.find( (key:string) => areas[key].includes(tecName));

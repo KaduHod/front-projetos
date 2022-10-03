@@ -6,22 +6,19 @@
             </div>
             <div class="project-item-content">
                 <p class="project-description">{{project.description}}</p>
-                <div class="project-tec-icons-container">
-                    <IconComponent v-if="sortedTecs['Back-end'].length" v-for="tec in sortedTecs['Back-end']" :key="tec.name" :tecName="tec.name"/>
-                    <IconComponent v-if="sortedTecs['Front-end'].length" v-for="tec in sortedTecs['Front-end']" :key="tec.name" :tecName="tec.name"/>
-                    <IconComponent v-if="sortedTecs['Server'].length" v-for="tec in sortedTecs['Server']" :key="tec.name" :tecName="tec.name"/>
-                    <IconComponent v-if="sortedTecs['Versionamento'].length" v-for="tec in sortedTecs['Versionamento']" :key="tec.name" :tecName="tec.name"/>
-                </div> 
                 <div class="project-links">
-                    <LinkComponent :link="project.link" :title="'Link para o projeto'" :target="'_blank'" />
-                    <div class="project-repos">
-                        <ul v-if="Array.isArray(project.repositorie)">
-                            <li v-for="repositorie in project.repositorie" :key="repositorie">
-                                <LinkComponent  :link="repositorie" :target="'_blank'" :title="'Repositório'" />
-                            </li> 
-                        </ul>
-                        <LinkComponent v-else  :link="project.repositorie" :target="'_blank'" :title="'Repositório'" />
-                    </div>
+                    <Link :link="project.link" :title="'Link para o projeto'" :target="'_blank'" />
+                    <!-- <div class="project-repos"> -->
+                        <!-- <ul v-if="Array.isArray(project.repositorie)"> -->
+                            <!-- <li v-for="repositorie in project.repositorie" :key="repositorie"> -->
+                                <!--  <Link  :link="repositorie" :target="'_blank'" :title="'Repositório'" /> --> 
+                            <!-- </li>  -->
+                        <!-- </ul> -->
+                        <!--  <Link v-else  :link="project.repositorie" :target="'_blank'" :title="'Repositório'" /> --> 
+                    <!-- </div> -->
+                    <Technologies :projectName="project.name" :tecs="sortedTecs" />
+                    <Repositories :projectName="project.name" :tecs="sortedTecs" />
+                   
                 </div>   
             </div>
         </div>
@@ -33,13 +30,16 @@
     </div>
 </template>
 <script>
-import IconComponent from './Icon.vue'
-import LinkComponent from './Link.vue'
-import { toRefs, toRef } from 'vue'
-import { getAreaName } from '../Utils/tecs.ts'
+import Icon from './Icon.vue';
+import Link from './Link.vue';
+import Modal from './Modal.vue';
+import Technologies from './Technologies.vue';
+import Repositories from './Repositories.vue';
+import { toRefs, toRef } from 'vue';
+import { getAreaName } from '../Utils/tecs.ts';
 export default {
     components : {
-        IconComponent, LinkComponent
+        Icon, Link, Modal, Technologies, Repositories
     },
     props:{
         project:Object,
@@ -65,7 +65,7 @@ export default {
             if(area) acc[area].push(tec);
             if(error) console.error(area);
             return acc
-        }, {'Front-end':[],'Back-end':[], 'Server':[],'Versionamento':[]})       
+        }, {'Front-end':[],'Back-end':[], 'Server':[],'Versionamento':[]})   
         
         return {
             project,
@@ -79,7 +79,6 @@ export default {
     }
 }
 </script>
-
 <style>
 ul{
     padding: 0;
@@ -115,10 +114,9 @@ ul{
 
 
 .project-links{
-    margin-top: 20px;
     display: flex;
     height: fit-content;
-    flex-direction: column;
+    border: 1px solid rgba(255, 0, 0, 0);
     align-items: center;
     justify-content: space-around;
 }

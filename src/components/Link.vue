@@ -1,6 +1,6 @@
 <template>
     <div class="link" :class="class">
-        <IconComponent :tecName="iconName"  v-if="iconName" />
+        <!-- <IconComponent :tecName="iconName"  v-if="iconName" /> -->
         <a :target="target" :href="link">{{title}}</a>
     </div>
 </template>
@@ -46,30 +46,6 @@ export default {
 }
 </script>
 <style>
-    .link{
-        
-        background-color: rgb(255, 255, 255);
-        box-shadow: 0px 0px 15px rgba(209, 209, 209, 0.582);
-        border-radius: 5px;
-        height: 20px;
-        width: fit-content;
-        padding: 5px;
-        text-align: center;
-        
-        margin-top: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 5 0ms;
-    }
-    .link:hover{
-        background-color: rgb(255, 255, 255);
-        transform: scale(1.05);
-        box-shadow: 0px 0px 5px rgba(92, 92, 92, 0.637);
-    }
-    .link a{
-        width: 100%;
-       margin-right: 10px; 
-       text-align: center;
-    }
+    
+    
 </style>
